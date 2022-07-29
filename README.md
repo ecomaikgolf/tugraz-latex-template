@@ -132,7 +132,7 @@ To change these options, go to 'Options' in `document.tex` and modify the defaul
 
 ### Further configuration
 
-Manually `config/tugraz-style.sty`
+Manually modify `config/tugraz-style.sty`
 
 ## Comments
 
