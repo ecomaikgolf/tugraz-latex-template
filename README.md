@@ -1,5 +1,10 @@
 # TUGraz Personal LaTeX Template
 
+<p>
+  <img alt="Twocols example" src="https://user-images.githubusercontent.com/8388874/181807038-a70cba90-438c-42e1-b87c-29e8b606b7fa.png" width="45%"/> 
+  <img alt="Onecol example" src="https://user-images.githubusercontent.com/8388874/181808602-0a330b99-31ae-4853-9ada-ff5ca9def4b4.png" width="45%"/> 
+</p>
+
 ## Dependencies
 - LaTeX compiler: `pdflatex` or `lualatex` or `xelatex`... (Recommended `lualatex`)
 - Needed LaTeX packages, see `config/tugraz-style.sty`. (Recommended `texlive-full`)
@@ -12,7 +17,7 @@
 git clone https://github.com/ecomaikgolf/tugraz-latex-template.git
 cd tugraz-latex-template
 ```
-2. Edit `document.tex`, change 'CHANGEME' values & write desired text after `\begin{document}`
+2. Edit `document.tex`, modify 'CHANGEME' values & write desired text after `\begin{document}`
 3. Compile document
 ```
 make
@@ -21,8 +26,10 @@ make
 
 ### Advanced usage
 
+I defined my own commands/enviroments with modifications, take it into consideration. For example, for code use `code` and not `lstlisting`.
+
 - Add new packages in 'User Packages' (`document.tex`)
-- Fill the bibliography at 'Bibliography' (`document.tex`)
+- Write the bibliography at 'Bibliography' (`document.tex`)
 ```tex
 \AtEndDocument{
 \if\docbibliography1
