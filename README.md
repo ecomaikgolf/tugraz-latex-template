@@ -14,11 +14,16 @@ Examples: [twocols.pdf](https://github.com/ecomaikgolf/tugraz-latex-template/fil
 
 ## How to use
 
-1. Download template repository
+1. Clone repository or use template
 ```
-git clone https://github.com/ecomaikgolf/tugraz-latex-template.git
+git clone --depth 1 https://github.com/ecomaikgolf/tugraz-latex-template.git
 cd tugraz-latex-template
 ```
+
+or
+
+![image](https://user-images.githubusercontent.com/8388874/181812646-e6ffa204-a548-452f-a58a-35db0a70891d.png)
+
 2. Edit `document.tex`, modify 'CHANGEME' values & write desired text after `\begin{document}`
 3. Compile document
 ```
