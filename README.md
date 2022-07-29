@@ -5,8 +5,7 @@
   <img alt="Onecol example" src="https://user-images.githubusercontent.com/8388874/181808602-0a330b99-31ae-4853-9ada-ff5ca9def4b4.png" width="45%"/> 
 </p>
 
-[twocols.pdf](https://github.com/ecomaikgolf/tugraz-latex-template/files/9221979/twocols.pdf)
-[onecol.pdf](https://github.com/ecomaikgolf/tugraz-latex-template/files/9221973/onecol.pdf)
+Examples: [twocols.pdf](https://github.com/ecomaikgolf/tugraz-latex-template/files/9221979/twocols.pdf), [onecol.pdf](https://github.com/ecomaikgolf/tugraz-latex-template/files/9221973/onecol.pdf)
 
 ## Dependencies
 - LaTeX compiler: `pdflatex` or `lualatex` or `xelatex`... (Recommended `lualatex`)
