@@ -1,0 +1,365 @@
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+\if\docmulticols1
+	\RequirePackage[a4paper, left=10mm, right=10mm, top=15mm, bottom=15mm,footnotesep=\docfootnotesep]{geometry}
+\else
+	\RequirePackage[a4paper,top=2cm,left=1.5cm,right=1.5cm,bottom=2cm,footnotesep=\docfootnotesep]{geometry}
+\fi
+\RequirePackage[T1]{fontenc}
+\RequirePackage{hyperref}
+\RequirePackage{tikz}
+\usetikzlibrary{calc, fit}
+\RequirePackage[most, listings]{tcolorbox}
+\RequirePackage{adjustbox}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{pgfplots}
+\RequirePackage{multicol}
+\RequirePackage{fontawesome}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{float}
+\RequirePackage[font=sf,skip=5pt]{caption}
+\RequirePackage[default]{sourcecodepro}
+\RequirePackage{randtext}
+\if\docsectiondot1
+\RequirePackage{secdot}
+\fi
+\if\docparskip1
+\RequirePackage{parskip}
+\RequirePackage{indentfirst}
+\fi
+\RequirePackage{float}
+\RequirePackage{subcaption}
+
+%%%%%%%%%%%%%%%%%
+% CONFIGURATION %
+%%%%%%%%%%%%%%%%%
+
+% Footnote font
+\renewcommand\familydefault{\sfdefault}
+
+% Paragraph indent
+\setlength{\parindent}{\docparindent}
+
+% Supress warnings
+\pgfplotsset{compat=1.18}
+
+% Pagestyle fancyhdr
+\pagestyle{fancy}
+
+% TUGraz colors: 'pink' and 'gray'
+\definecolor{tugraz}{HTML}{\doccoloraccent}
+\definecolor{tugraz2}{HTML}{\doccolorsecond}
+
+\hypersetup{
+  % Link Coloring
+  colorlinks=true,
+  linkcolor=tugraz,
+  urlcolor=tugraz,
+  citecolor=tugraz,
+  % Metadata
+  pdfauthor={\docauthor},
+  pdftitle={\doctitle},
+}
+
+% More Metadata
+\date{\docdate}
+
+% Images default path
+\graphicspath{{\imagesdefaultpath}}
+
+% Sections title format
+\titleformat*{\section}{\Large\bfseries\sffamily\color{tugraz}}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{tugraz}}
+\titleformat*{\subsubsection}{\bfseries\sffamily\color{tugraz}}
+
+% Section dot after number
+\if\docsectiondot1
+  \sectiondot{section}
+  \sectiondot{subsection}
+  \sectiondot{subsubsection}
+\fi
+
+% Header & Footer | Page Numbering
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead{}
+\cfoot{}
+\rfoot{\tikz{\node[rectangle,draw=tugraz,fill=tugraz,text=white] {\sffamily\bfseries\thepage};}}
+
+% New Captions
+\DeclareCaptionType[fileext=trm]{term}
+
+% Caption Text
+\captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={Figure},font=small}
+\captionsetup[lstlisting]{labelfont={bf},labelformat={default},labelsep=period,name={Listing},font=small}
+\captionsetup[table]{labelfont={bf},labelformat={default},labelsep=period,name={Table},font=small}
+\captionsetup[term]{labelfont={bf},labelformat={default},labelsep=period,name={Terminal},font=small}
+
+% Caption Format (by section numbering)
+\AtBeginDocument{\counterwithin{figure}{section}}
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
+\AtBeginDocument{\counterwithin{term}{section}}
+\AtBeginDocument{\counterwithin{table}{section}}
+\AtBeginDocument{\def\svgwidth{3cm}}
+
+% Enumeration & Itemize margins
+\AtBeginDocument{
+  \setlist[itemize]{align=parleft,left=\docitemizeleftmargin,nolistsep}
+  \setlist[enumerate]{align=parleft,left=\docitemizeleftmargin,nolistsep}
+  \newcommand{\localtextbulletone}{\textcolor{tugraz}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+  \renewcommand{\labelitemi}{\localtextbulletone}
+}
+
+% Multicol column config
+\AtBeginDocument{
+  \setlength{\columnsep}{\doccolsep}
+  \setlength{\columnseprule}{\doccolumnrule}
+}
+
+%%%%%%%%%%%%%%%
+% Enviroments %
+%%%%%%%%%%%%%%%
+
+% More controlable figure
+\newenvironment{Figure}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
+
+% Insert figure (helper)
+\newcommand{\fig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#2, scale=1]{#1}
+    \caption{#3}
+    \label{fig:#4}
+  \end{figure}
+  \vspace{-0.6cm}
+}
+
+% Insert two figures (helper)
+\newcommand{\figtwo}[9]{
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+      \centering
+      \includegraphics[width=#2, scale=1]{#1}
+      \caption{#3}
+      \label{fig:#4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
+      \centering
+      \includegraphics[width=#6, scale=1]{#5}
+      \caption{#7}
+      \label{fig:#8}
+    \end{subfigure}
+    \caption{#9}
+  \end{figure}
+  \vspace{-0.6cm}
+}
+
+% Two columns
+\newenvironment{twocols}
+{\setlength{\columnseprule}{0pt}\begin{multicols}{2}}
+  {\end{multicols}}
+
+% Three columns
+\newenvironment{threecols}
+{\setlength{\columnseprule}{0pt}\begin{multicols}{3}}
+  {\end{multicols}}
+
+% Four columns
+\newenvironment{fourcols}
+{\setlength{\columnseprule}{0pt}\begin{multicols}{4}}
+  {\end{multicols}}
+
+% N columns
+\newenvironment{ncols}[1]
+{\setlength{\columnseprule}{0pt}\begin{multicols}{#1}}
+  {\end{multicols}}
+
+% Code enviroment
+\newtcblisting{code}[1][]{
+  enhanced,
+  attach boxed title to top right={yshift=-0.3cm,xshift=-0.5cm},
+  boxed title style={
+    enhanced,
+    size=small,
+    colback=tugraz2,
+    colframe=tugraz,
+    arc=0pt,
+    boxrule=\docborder,
+    outer arc=0pt,
+  },
+  arc=0pt,
+  outer arc=0pt,
+  bicolor,
+  colbacktitle=tugraz,
+  top=-2pt,
+  right=0pt,
+  bottom=-2pt,
+  colback=tugraz2,
+  listing remove caption=false,
+  boxrule=\docborder,
+  title={\ifstrempty{#1}{\color{tugraz} \scriptsize \faCode \hspace{0.1cm} \texttt{Snippet}}{\color{tugraz} \scriptsize \faCode \hspace{0.1cm} \texttt{#1}}},
+  listing only,
+  listing options={
+    language=C++,
+    escapechar=¡,
+    xleftmargin=3pt,
+    basicstyle=\ttfamily\scriptsize,
+    numbers=left,
+    tabsize=1,
+    breaklines=true,
+    numbersep=5pt,
+    postbreak=\mbox{\textcolor{tugraz}{$\hookrightarrow$}\space},
+    numberstyle=\ttfamily\scriptsize\color{gray}}}
+
+% Terminal enviroment
+\newtcblisting{terminal}[1][]{
+  enhanced,
+  attach boxed title to top left={yshift=-0.3cm,xshift=0.5cm},
+  boxed title style={
+    size=small,
+    colback=tugraz2,
+    colframe=tugraz,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=\docborder,
+  },
+  arc=0pt,
+  outer arc=0pt,
+  bicolor,
+  colbacktitle=tugraz,
+  top=0.15cm,
+  left=3pt,
+  right=0pt,
+  bottom=-2pt,
+  colback=tugraz2,
+  boxrule=\docborder,
+  title={\ifstrempty{#1}{\color{tugraz} \scriptsize \faTerminal \hspace{0.1cm} \texttt{Command}}{\color{tugraz} \scriptsize \faTerminal \hspace{0.1cm} \texttt{#1}}},
+  listing only,
+  listing options={
+    basicstyle=\ttfamily\scriptsize,
+    escapechar=¡,
+    postbreak=\mbox{\textcolor{tugraz}{$\hookrightarrow$}\space},
+    tabsize=1,
+    breaklines=true}}
+
+% Command Enviroment
+\definecolor{border}{HTML}{404040}
+\newtcblisting{command}[1][]{
+  enhanced,
+  overlay={
+    \draw[line width=\docborder,draw=border] ($(frame.north west) + (0.6,0)$) -- (frame.north east) -- (frame.south east) -- ($(frame.south west) + (0.6,0)$);
+    \filldraw[fill=tugraz2,draw=tugraz, line width=\docborder] (0,0) rectangle ($(frame.north west) + (0.6,0)$);
+    \node[anchor=north west] at ([xshift=-1pt,yshift=-0.3pt]frame.north west){\color{tugraz} \faTerminal};
+  }
+  boxed title style={
+    arc=0pt,
+    outer arc=0pt,
+  },
+  arc=0pt,
+  outer arc=0pt,
+  bicolor,
+  colbacktitle=tugraz,
+  top=-0.2cm,
+  left=0.7cm,
+  right=0pt,
+  bottom=-0.25cm,
+  colback=tugraz2,
+  boxrule=0pt,
+  frame hidden,
+  listing only,
+  listing options={
+    basicstyle=\ttfamily\scriptsize,
+    escapechar=¡,
+    postbreak=\mbox{\textcolor{tugraz}{$\hookrightarrow$}\space},
+    tabsize=1,
+    breaklines=true}}
+
+%%%%%%%%%%%%
+% Commands %
+%%%%%%%%%%%%
+
+% Emphasis
+\renewcommand{\emph}[1]{{\color{tugraz}\textbf{#1}}}
+
+% Number circles
+\newcommand{\cb}[1]{\tikz[baseline=-0.5ex]{\node[circle,fill=tugraz,label={[text=white,font=\sffamily]center:{\textbf{#1}}}] (c) at (1,0){};}}
+\newcommand{\tb}[1]{\tikz[baseline=-0.5ex]{\node[circle,fill=tugraz,label={[text=white,font=\sffamily]center:{#1}}] (c) at (1,0){};}}
+
+% Easily define lua variables
+%\newcommand{\luavar}[2]{
+%  \makeatletter\protected@edef#1{\directlua{tex.print(#2)}}
+%}
+
+%%%%%%%%%%%%%%%%%%%
+% Document Format %
+%%%%%%%%%%%%%%%%%%%
+
+% Title format
+\renewcommand\maketitle{
+  {
+    \onecolumn
+    \begin{adjustbox}{width=\textwidth}
+      \begin{tcolorbox}[
+        enhanced,
+        arc=0pt,
+        bicolor,
+        colbacktitle=tugraz,
+        colback=tugraz2,
+        frame hidden,
+        boxrule=0pt,
+        title={\vspace{0.25cm}},
+        overlay={
+          \node[anchor=east]
+          at ([xshift=-10pt, yshift=-40pt] $ (frame.north east) $ )
+          {\input{\doclogo}};}
+        ]
+        \begin{minipage}[c][][t]{.78\textwidth}
+
+          \begin{itemize}
+                  \setlength{\itemindent}{-2.6em}
+            \itemsep0.1em
+            \itemindent-15pt
+            \item[] { \fontfamily{\docfont}\selectfont \faQuoteLeft \hspace{0.29cm} \doctitle}
+            \item[] { \fontfamily{\docfont}\selectfont \faTag \hspace{0.31cm} \docsubject}
+            \item[] { \fontfamily{\docfont}\selectfont \faCalendar \hspace{0.29cm} \docdate}
+            \item[] { \fontfamily{\docfont}\selectfont \faUser \hspace{0.33cm} \docauthor \small \space \texttt{<\docemail>}}
+          \end{itemize}
+        \end{minipage}
+      \end{tcolorbox}
+    \end{adjustbox}
+  }
+}
+
+% Insert title & begin multicols
+\AtBeginDocument{
+  \maketitle
+
+  \if\docmulticols1
+    \if\doccolbalance1
+      \begin{multicols}{2}
+    \else
+      \begin{multicols*}{2}
+    \fi
+  \fi
+}
+
+% Close multicols & insert bibliography
+\AtEndDocument{
+  \if\docmulticols1
+    \if\doccolbalance1
+      \end{multicols}
+    \else
+      \end{multicols*}
+    \fi
+  \fi
+}

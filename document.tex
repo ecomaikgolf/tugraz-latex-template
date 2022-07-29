@@ -1,0 +1,87 @@
+% !TEX TS-program = lualatex
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%
+% CHANGEME %
+%%%%%%%%%%%%
+\newcommand{\doctitle}{Title}
+\newcommand{\docsubject}{Subject}
+\newcommand{\docdate}{Date}
+\newcommand{\docauthor}{Author}
+\newcommand{\docemail}{\randomize{Email}}
+
+%%%%%%%%%%%
+% Options %
+%%%%%%%%%%%
+\newcommand{\doccoloraccent}{e4154b} 			% Document accent color
+\newcommand{\doccolorsecond}{efefef} 			% Document secondary color
+\newcommand{\doclogo}{config/logo.pdf_tex} 		% Document logo. (Same size)
+\newcommand{\docfont}{lmss} 					% Document font. Select by code
+\newcommand{\docfootnotesep}{0.5cm}             % Footnote top separation from text
+\newcommand{\imagesdefaultpath}{images/}        % Default image path
+\def\docmulticols{1} 							% Twocol
+\def\doccolbalance{1} 							% Twocol balancing
+\newcommand{\doccolsep}{20pt}                   % Twocol column separation
+\newcommand{\doccolumnrule}{0pt}                % Twocol column separator line width
+\def\docbibliography{0} 						% Bibliography
+\def\docparskip{0} 								% Blankline between paragraphs
+\newcommand{\docparindent}{0.4cm}				% Paragraph first letter indentation
+\def\docsectiondot{1} 							% Dot after section number
+\newcommand{\docitemizeleftmargin}{0.2cm}       % Itemize left margin
+\newcommand{\docborder}{1.5pt}                  % Boxes border width (code, terminal, etc.)
+
+%%%%%%%%%%%%%%%%%
+% User Packages %
+%%%%%%%%%%%%%%%%%
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%
+% Bibliography %
+%%%%%%%%%%%%%%%%
+\AtEndDocument{
+\if\docbibliography1
+  \begin{thebibliography}{9}
+    % \bibitem{key}
+    % Text
+  \end{thebibliography}
+\fi
+}
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+\usepackage{config/tugraz-template}
+\begin{document}
+
+% \fig{file}{size}{caption}{label}
+% \figtwo{file1}{size1}{caption1}{label1}{file2}{size2}{caption2}{label2}{label}
+%
+% {
+% \begin{code}[title]
+% \end{code}
+% \captionof{lstlisting}{Code}
+% }
+%
+% {
+% \begin{terminal}[title]
+% \end{terminal}
+% \captionof{term}{caption}
+% }
+%
+% \begin{twocols}
+% \end{twocols}
+% \begin{threecols}
+% \end{threecols}
+% \begin{fourcols}
+% \end{fourcols}
+% \begin{ncols}{n}
+% \end{ncols}
+%
+% As seen in \autoref{label}
+%
+% \begin{code}[title]
+%     int a; ¡\cb{1}¡
+% \end{code}
+% In \tb{1} we create an int
+
+\end{document}
