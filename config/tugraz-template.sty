@@ -4,7 +4,7 @@
 \if\docmulticols1
 	\RequirePackage[a4paper, left=10mm, right=10mm, top=15mm, bottom=15mm,footnotesep=\docfootnotesep]{geometry}
 \else
-	\RequirePackage[a4paper,top=2cm,left=1.5cm,right=1.5cm,bottom=2cm,footnotesep=\docfootnotesep]{geometry}
+	\RequirePackage[a4paper,top=15mm,left=1.5cm,right=1.5cm,bottom=15mm,footnotesep=\docfootnotesep]{geometry}
 \fi
 \RequirePackage[T1]{fontenc}
 \RequirePackage{hyperref}
@@ -94,18 +94,21 @@
 
 % New Captions
 \DeclareCaptionType[fileext=trm]{term}
+\DeclareCaptionType[fileext=cmd]{cmd}
 
 % Caption Text
 \captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={Figure},font=small}
 \captionsetup[lstlisting]{labelfont={bf},labelformat={default},labelsep=period,name={Listing},font=small}
 \captionsetup[table]{labelfont={bf},labelformat={default},labelsep=period,name={Table},font=small}
 \captionsetup[term]{labelfont={bf},labelformat={default},labelsep=period,name={Terminal},font=small}
+\captionsetup[cmd]{labelfont={bf},labelformat={default},labelsep=period,name={Command},font=small}
 
 % Caption Format (by section numbering)
 \AtBeginDocument{\counterwithin{figure}{section}}
 \AtBeginDocument{\counterwithin{lstlisting}{section}}
 \AtBeginDocument{\counterwithin{term}{section}}
 \AtBeginDocument{\counterwithin{table}{section}}
+\AtBeginDocument{\counterwithin{cmd}{section}}
 \AtBeginDocument{\def\svgwidth{3cm}}
 
 % Enumeration & Itemize margins
@@ -161,7 +164,7 @@
     \end{subfigure}
     \caption{#9}
   \end{figure}
-  \vspace{-0.6cm}
+  \vspace{-0.4cm}
 }
 
 % Two columns
