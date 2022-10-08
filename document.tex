@@ -20,12 +20,13 @@
 \newcommand{\docfootnotesep}{0.5cm}             % Footnote top separation from text
 \newcommand{\imagesdefaultpath}{images/}        % Default image path
 \def\docmulticols{1} 							% Twocol
-\def\doccolbalance{1} 							% Twocol balancing
+\def\doccolbalance{0} 							% Twocol balancing
 \newcommand{\doccolsep}{20pt}                   % Twocol column separation
 \newcommand{\doccolumnrule}{0pt}                % Twocol column separator line width
 \def\docbibliography{1} 						% Bibliography
 \def\docparskip{0} 								% Blankline between paragraphs
-\newcommand{\docparindent}{0.4cm}				% Paragraph first letter indentation
+\newcommand{\docparindent}{0cm}				    % Paragraph first letter indentation
+\newcommand{\docparspacing}{0.1cm}				% Paragraph spacing between them
 \def\docsectiondot{1} 							% Dot after section number
 \newcommand{\docitemizeleftmargin}{0.2cm}       % Itemize left margin
 \newcommand{\docborder}{1.5pt}                  % Boxes border width (code, terminal, etc.)
@@ -58,9 +59,6 @@
 \usepackage{config/tugraz-template}
 \begin{document}
 
-\begin{verbox}
-    verboxtest
-\end{verbox}
 % \fig{file}{size}{caption}{label}
 % \figtwo{file1}{size1}{caption1}{label1}{file2}{size2}{caption2}{label2}{label}
 %
