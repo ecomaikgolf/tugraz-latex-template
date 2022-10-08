@@ -43,6 +43,9 @@
 % Footnote font
 \renewcommand\familydefault{\sfdefault}
 
+% URL font
+\renewcommand{\UrlFont}{\ttfamily\small}
+
 % Paragraph indent
 \setlength{\parindent}{\docparindent}
 
@@ -139,6 +142,7 @@
 
 % Insert figure (helper)
 \newcommand{\fig}[4]{
+  \vspace{-0.15cm}
   \begin{figure}[H]
     \centering
     \includegraphics[width=#2, scale=1]{#1}
@@ -203,6 +207,7 @@
     boxrule=\docborder,
     outer arc=0pt,
   },
+  breakable,
   arc=0pt,
   outer arc=0pt,
   bicolor,
@@ -230,6 +235,7 @@
 % Terminal enviroment
 \newtcblisting{terminal}[1][]{
   enhanced,
+  breakable,
   attach boxed title to top left={yshift=-0.3cm,xshift=0.5cm},
   boxed title style={
     size=small,
@@ -260,6 +266,7 @@
 
 \newtcblisting{verbox}[1][]{
   enhanced,
+  breakable,
   arc=0pt,
   outer arc=0pt,
   bicolor,
@@ -283,6 +290,7 @@
 \definecolor{border}{HTML}{404040}
 \newtcblisting{command}[1][]{
   enhanced,
+  breakable,
   overlay={
     \draw[line width=\docborder,draw=border] ($(frame.north west) + (0.6,0)$) -- (frame.north east) -- (frame.south east) -- ($(frame.south west) + (0.6,0)$);
     \filldraw[fill=tugraz2,draw=tugraz, line width=\docborder] (0,0) rectangle ($(frame.north west) + (0.6,0)$);
