@@ -255,6 +255,27 @@
     tabsize=1,
     breaklines=true}}
 
+\newtcblisting{verbox}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  bicolor,
+  colbacktitle=tugraz,
+  top=-2pt,
+  right=0pt,
+  bottom=-2pt,
+  colback=tugraz2,
+  listing remove caption=false,
+  boxrule=\docborder,
+  listing only,
+  listing options={
+    escapechar=¡,
+    xleftmargin=-6pt,
+    basicstyle=\ttfamily\scriptsize,
+    tabsize=1,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{tugraz}{$\hookrightarrow$}\space}}}
+
 % Command Enviroment
 \definecolor{border}{HTML}{404040}
 \newtcblisting{command}[1][]{

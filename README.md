@@ -93,6 +93,16 @@ main() {
 }
 ```
 
+- Insert verbatim boxed enviroment
+
+```tex
+{
+  \begin{verbox}
+verbatimcontent
+  \end{verbox}
+}
+```
+
 - Insert command
 
 ```tex
