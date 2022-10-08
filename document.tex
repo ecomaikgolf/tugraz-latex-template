@@ -23,7 +23,7 @@
 \def\doccolbalance{1} 							% Twocol balancing
 \newcommand{\doccolsep}{20pt}                   % Twocol column separation
 \newcommand{\doccolumnrule}{0pt}                % Twocol column separator line width
-\def\docbibliography{0} 						% Bibliography
+\def\docbibliography{1} 						% Bibliography
 \def\docparskip{0} 								% Blankline between paragraphs
 \newcommand{\docparindent}{0.4cm}				% Paragraph first letter indentation
 \def\docsectiondot{1} 							% Dot after section number
@@ -40,9 +40,14 @@
 %%%%%%%%%%%%%%%%
 \AtEndDocument{
 \if\docbibliography1
+  \clearpage
   \begin{thebibliography}{9}
     % \bibitem{key}
     % Text
+
+    \bibitem{template}
+    TUGraz \LaTeX \space Template, Ernesto Martínez García \texttt{<\randomize{me@ecomaikgolf.com}>}, \url{https://github.com/ecomaikgolf/tugraz-latex-template}
+
   \end{thebibliography}
 \fi
 }
@@ -53,6 +58,9 @@
 \usepackage{config/tugraz-template}
 \begin{document}
 
+\begin{verbox}
+    verboxtest
+\end{verbox}
 % \fig{file}{size}{caption}{label}
 % \figtwo{file1}{size1}{caption1}{label1}{file2}{size2}{caption2}{label2}{label}
 %
